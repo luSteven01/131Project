@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <!-- If there is a title, then execute that title,
+          if not, then do the default -->
+    {% if title %}
+      <title> {{title}} </title>
+    {% else %}
+      <title>Home Page - Air Line</title>
+    {% endif %}
+
+  </head>
+  <body>
+    <h1>Welcome to PetJett!</h1>
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Contact</th>
+        <th>Country</th>
+      </tr>
+      <tr>
+        <td>{{company}}</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+    </table>
+  <ul>
+    <!-- List all the names in a for loop, for the number of names-->
+      {% for n in names %}
+    <!-- li is for a new line in a list-->
+      <li>{{n}}</li>
+      {% endfor %}
+  </ul>
+
+  {% for n in breeds %}
+  <p>{{n.breed}}:{{n.body}}</p>
+  {% endfor %}
+
+  </body>
+</html>

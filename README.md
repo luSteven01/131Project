@@ -1,2 +1,1 @@
-# CS 131
-PettJett
+# CS 131 : PettJett

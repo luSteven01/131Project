@@ -1,5 +1,80 @@
-<ul>
-  <li>Pets must be spayed/neutered and fully vaccinated (must show medical records)</li>
-  <li>Dogs must be leashed, and cats must be in their carrier at the airport and accompanied by their human at all times</li>
-  <li>Please do not clap at the end of the flight as it will potentially scare other pets</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Pet Jett</title>
+    <style>
+        .accordion {
+            background-color: #8bc34a;
+            color: #fff;
+            cursor: pointer;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        .active, .accordion:hover {
+            background-color: #d3eba9;
+        }
+
+        .arrow:after {
+            content: '\02795';
+            font-size: 12px;
+            color: #666;
+            float: right;
+        }
+
+        .active .arrow:after {
+            content: "\2796";
+        }
+
+        .panel {
+            padding: 0 12px;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQ - Pet Jett</h1>
+
+    <button class="accordion">Do all pets need shots? <span class="arrow"></span></button>
+    <div class="panel">
+        <p>Yep, your furry friend needs to be up to date with their shots to hop on board!</p>
+    </div>
+
+    <button class="accordion">Can my pet chill with me in the cabin? <span class="arrow"></span></button>
+    <div class="panel">
+        <p>For sure! If your buddy’s small enough and plays by the rules, they can be your in-flight buddy.</p>
+    </div>
+
+    <button class="accordion">Any breed restrictions? <span class="arrow"></span></button>
+    <div class="panel">
+        <p>Nope, we're all about inclusivity! Just keep an eye on aggressive behavior.</p>
+    </div>
+
+    <!-- Add more FAQ items as needed -->
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

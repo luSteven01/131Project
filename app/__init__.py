@@ -13,7 +13,8 @@ obj.config.from_mapping(
 
     #where the database file is stored
     SQLALCHEMY_DATABASE_URI='sqlite:///' + os.path.join(pathName, 'app.db')
+
 )
-Usersdb =  SQLAlchemy(obj)
+db = SQLAlchemy(obj)
 
 from app import routes

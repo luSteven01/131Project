@@ -1,6 +1,6 @@
 from flask import Flask, render_template, flash, redirect
 from app import obj
-from app.forms import LoginForm, SearchForm
+from app.forms import LoginForm, ViewForm
 
 #these must be imported to manipulate the database
 
@@ -90,15 +90,15 @@ def login():
     #flash(f'{current_form.username.data} is an invalid username')
     return render_template("login.html", form=current_form)
 
-@obj.route("/search", methods=["GET", "POST"])
+@obj.route("/view", methods=["GET", "POST"])
 #tells flask to execute login() when user goes to /login path of the webpage
-def search():
-    current_form = SearchForm()
+def view():
+    current_form = ViewForm()
     if current_form.validate_on_submit():
         flash(f'VALID FLIGHT NUMBER {current_form.fn.data}')
 
         ############Database Procedure here####################
-    return render_template("search.html", form=current_form)
+    return render_template("view.html", form=current_form)
 
 
 @obj.route("/guidelines")

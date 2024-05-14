@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Flights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Search Flights</h1>
+    </header>
+    <main>
+        <form method="POST" action="/search">
+            <div>
+                <label for="trip_type">Trip Type:</label>
+                <select id="trip_type" name="trip_type" required>
+                    <option value="one_way">One Way</option>
+                    <option value="round_trip">Round Trip</option>
+                </select>
+            </div>
+            <div>
+                <label for="departure">Flying From:</label>
+                <select id="departure" name="departure" required>
+                    {% for airport in airports %}
+                        <option value="{{ airport.code }}">{{ airport.airport_name }} ({{ airport.code }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="arrival">Flying To:</label>
+                <select id="arrival" name="arrival" required>
+                    {% for airport in airports %}
+                        <option value="{{ airport.code }}">{{ airport.airport_name }} ({{ airport.code }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="departure_date">Departure Date:</label>
+                <input type="date" id="departure_date" name="departure_date" required>
+            </div>
+            <div id="return_date_div">
+                <label for="return_date">Return Date:</label>
+                <input type="date" id="return_date" name="return_date">
+            </div>
+            <div>
+                <label for="with_pet">Flying With Pet:</label>
+                <select id="with_pet" name="with_pet" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div id="num_pets_div">
+                <label for="num_pets">Number of Pets:</label>
+                <input type="number" id="num_pets" name="num_pets" min="1" step="1">
+            </div>
+            <div>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </main>
+    <script>
+        document.getElementById('trip_type').addEventListener('change', function() {
+            const returnDateDiv = document.getElementById('return_date_div');
+            if (this.value === 'round_trip') {
+                returnDateDiv.style.display = 'block';
+            } else {
+                returnDateDiv.style.display = 'none';
+            }
+        });
+
+        document.getElementById('with_pet').addEventListener('change', function() {
+            const numPetsDiv = document.getElementById('num_pets_div');
+            if (this.value === 'yes') {
+                numPetsDiv.style.display = 'block';
+            } else {
+                numPetsDiv.style.display = 'none';
+            }
+        });
+
+        // Initialize the form to hide elements as needed
+        document.getElementById('trip_type').dispatchEvent(new Event('change'));
+        document.getElementById('with_pet').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

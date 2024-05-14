@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> Search for your flight</h1>
+<h2> Flight Number:</h2>
+<form action=" " method="POST" novalidate>
+    <p>{{form.fn.label}}
+        {{form.fn(size=32)}}
+    </p>
+    <p>{{form.submit()}}
+    </p>
+    <p></p>
+    <p></p>
+</form>
+{% endblock %}

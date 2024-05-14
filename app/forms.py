@@ -6,3 +6,7 @@ class LoginForm(FlaskForm, Form):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+
+class SearchForm(FlaskForm, Form):
+    fn = StringField('Flight Number',validators=[DataRequired()])
+    submit = SubmitField('Search')

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        main {
+            padding-bottom: 50px; /* Adjust this value as needed */
+        }
+        .receipt {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .receipt h2 {
+            margin-top: 0;
+        }
+        .receipt p {
+            margin: 5px 0;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Booking Confirmation</h1>
+    </header>
+    <main>
+        <h2>Your Booking Details</h2>
+        <p>Flight Number: {{ booking.flight_number }}</p>
+        <p>Departure: {{ booking.departure }}</p>
+        <p>Arrival: {{ booking.arrival }}</p>
+        <p>Date: {{ booking.date }}</p>
+        <p>Time: {{ booking.time }}</p>
+        <p>Price: ${{ booking.price }}</p>
+
+        <h2>Your Information</h2>
+        <p>Name: {{ user_info.user_name }}</p>
+        <p>Email: {{ user_info.user_email }}</p>
+        <p>Phone: {{ user_info.user_phone }}</p>
+
+        <h2>Pet Information</h2>
+        {% for pet_name in user_info.pet_names %}
+            <p>Pet's Name: {{ pet_name }}</p>
+        {% endfor %}
+        <p>Pet Type: {{ user_info.pet_type }}</p>
+
+        <h2>Emergency Contact</h2>
+        <p>Name: {{ user_info.emergency_contact_name }}</p>
+        <p>Phone: {{ user_info.emergency_contact_phone }}</p>
+
+        <h2>Seat Selection</h2>
+        <p>Seat Number: {{ seat_selection }}</p>
+
+        <h2>Payment Status</h2>
+        <p>{{ payment_status }}</p>
+
+        <h2>Confirmation Number</h2>
+        <p>{{ confirmation_number }}</p>
+
+        <div class="receipt">
+            <h2>Receipt</h2>
+            <p>Flight Price: ${{ user_info.flight_price }}</p>
+            <p>Pet Fee: ${{ user_info.pet_fee }} ({{ user_info.num_pets }} pets @ $100 each)</p>
+            <p>Tax (7.5%): ${{ user_info.tax_amount }}</p>
+            <p class="total">Total Price: ${{ user_info.total_price }}</p>
+        </div>
+
+        <a href="/">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pet Flight Booking</p>
+    </footer>
+</body>
+</html>

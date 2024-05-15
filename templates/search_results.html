@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+    </header>
+    <main>
+        <h2>Search Criteria</h2>
+        <p>Trip Type: {{ trip_type }}</p>
+        <p>Flying From: {{ departure }}</p>
+        <p>Flying To: {{ arrival }}</p>
+        <p>Departure Date: {{ departure_date }}</p>
+        {% if trip_type == 'round_trip' %}
+            <p>Return Date: {{ return_date }}</p>
+        {% endif %}
+
+        {% if flights %}
+            <h2>Available Flights</h2>
+            <form method="POST" action="/book_flight">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Flight Number</th>
+                            <th>Departure</th>
+                            <th>Arrival</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for flight in flights %}
+                            <tr>
+                                <td><input type="radio" name="selected_flight" value="{{ flight['id'] }}" required></td>
+                                <td>{{ flight['flight_number'] }}</td>
+                                <td>{{ flight['departure'] }}</td>
+                                <td>{{ flight['arrival'] }}</td>
+                                <td>{{ flight['date'] }}</td>
+                                <td>{{ flight['time'] }}</td>
+                                <td>{{ flight['price'] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit">Book Selected Flight</button>
+            </form>
+        {% else %}
+            <p>No flights found.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

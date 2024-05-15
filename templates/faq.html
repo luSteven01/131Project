@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-section {
+            margin-bottom: 20px;
+        }
+        .faq-section h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-item h3 {
+            margin: 0;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .faq-item p {
+            margin: 5px 0 0 20px;
+            display: none;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item h3');
+
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const parent = this.parentElement;
+                    parent.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>FAQ</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p>Here are some common questions and answers about our service.</p>
+            <div class="faq-section">
+                <h2>Booking Process</h2>
+                <div class="faq-item">
+                    <h3>How do I book a flight for my pet?</h3>
+                    <p>You can book a flight for your pet by using our online booking system. Simply select your departure and arrival locations, choose your flight, and provide the required information about your pet.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I book a flight for multiple pets at once?</h3>
+                    <p>Yes, you can book flights for multiple pets in one transaction. Just provide the details for each pet during the booking process.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What information do I need to provide when booking a flight for my pet?</h3>
+                    <p>You will need to provide your pet's name, breed, weight, and any special requirements they may have. You will also need to provide your contact information and emergency contact details.</p>
+                </div>
+            </div>
+            <div class="faq-section">
+                <h2>Payment and Refunds</h2>
+                <div class="faq-item">
+                    <h3>What payment methods are accepted?</h3>
+                    <p>We accept all major credit cards, including Visa, MasterCard, American Express, and Discover.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is my payment information secure?</h3>
+                    <p>Yes, we use industry-standard encryption to protect your payment information. Your payment details are securely processed through our payment gateway.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What is your refund policy?</h3>
+                    <p>If you need to cancel your booking, you may be eligible for a refund depending on the terms and conditions of your booking. Please contact our customer service for more information.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How can I request a refund?</h3>
+                    <p>To request a refund, please contact our customer service team with your booking details and reason for the refund request.</p>
+                </div>
+            </div>
+            <div class="faq-section">
+                <h2>Travel Requirements</h2>
+                <div class="faq-item">
+                    <h3>What are the travel requirements for pets?</h3>
+                    <p>All pets must have a valid health certificate issued by a licensed veterinarian. The certificate should be issued within 10 days of travel. Please check our travel requirements page for more details.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are there any breed or size restrictions for pets?</h3>
+                    <p>Some airlines have breed and size restrictions for pets. Please check with your airline for specific requirements before booking.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need to provide any health certificates for my pet?</h3>
+                    <p>Yes, you will need to provide a health certificate issued by a licensed veterinarian. The certificate should be issued within 10 days of travel.</p>
+                </div>
+            </div>
+            <div class="faq-section">
+                <h2>On the Flight</h2>
+                <div class="faq-item">
+                    <h3>How should I prepare my pet for the flight?</h3>
+                    <p>Ensure your pet is well-rested and has had a chance to relieve themselves before the flight. Provide a comfortable and secure carrier for your pet.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What should I pack for my pet's flight?</h3>
+                    <p>Pack a small bag with your pet's essentials, including food, water, a leash, and any medications they may need.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Where will my pet be placed during the flight?</h3>
+                    <p>Your pet will be placed in a secure and climate-controlled area of the aircraft. Small pets may be allowed to travel in the cabin with you.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I visit my pet during the flight?</h3>
+                    <p>Unfortunately, you will not be able to visit your pet during the flight. However, rest assured that our staff will ensure your pet's safety and comfort.</p>
+                </div>
+            </div>
+            <div class="faq-section">
+                <h2>After Booking</h2>
+                <div class="faq-item">
+                    <h3>How can I change or cancel my booking?</h3>
+                    <p>You can change or cancel your booking by logging into your account and accessing your booking details. Alternatively, you can contact our customer service team for assistance.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How can I check the status of my booking?</h3>
+                    <p>You can check the status of your booking by logging into your account and accessing your booking details.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What if my pet gets sick before the flight?</h3>
+                    <p>If your pet gets sick before the flight, please contact your veterinarian and our customer service team as soon as possible.</p>
+                </div>
+            </div>
+            <div class="faq-section">
+                <h2>Miscellaneous</h2>
+                <div class="faq-item">
+                    <h3>Do you offer frequent flyer programs for pets?</h3>
+                    <p>Yes, we offer a frequent flyer program for pets. Please check our frequent flyer page for more details.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I earn miles or points for booking pet flights?</h3>
+                    <p>Yes, you can earn miles or points for booking pet flights. Please check our frequent flyer page for more details.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Who can I contact if I have more questions?</h3>
+                    <p>If you have more questions, please contact our customer service team. We are here to help!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pet Flight Booking</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Flight Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>View Flight Status</h1>
+    </header>
+    <main>
+        <form method="POST" action="/view_flight_status">
+            <div>
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required>
+            </div>
+            <div>
+                <label for="confirmation_number">Confirmation Number:</label>
+                <input type="text" id="confirmation_number" name="confirmation_number" required>
+            </div>
+            <button type="submit">View Status</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pet Flight Booking</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Cancellation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Ticket Cancellation</h1>
+    </header>
+    <main>
+        <form method="POST" action="/cancel_booking">
+            <div>
+                <label for="last_name">Full Name:</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <div>
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" required>
+            </div>
+            <div>
+                <label for="confirmation_number">Confirmation Number:</label>
+                <input type="text" id="confirmation_number" name="confirmation_number" required>
+            </div>
+            <button type="submit">Cancel Booking</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Pet Flight Booking</p>
+    </footer>
+</body>
+</html>

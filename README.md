@@ -1,5 +1,8 @@
 # CS 131 : PettJett
 
+# Library used
+[flask, flask_sqlalchemy, flask_bcrypt, flask_migrate, random, datetime, flask_wtf, wtforms]
+
 # Website Set up 
 Run the following commands
 1. python init_db.py
@@ -49,6 +52,3 @@ Ben Ho : [Booking Confirmation, View Booking, Ticket Cancellation, View Flight S
 Steven Lu : [Search Flights, Search Result, Account, FAQ]
 Hei Chun Chan : [Home Page, Search Flight, Search Result, Account, Github]
 Melanie Bordon : [View Flight Status, Seat Selection, Payment, FAQ]
-
-# Library used
-[flask, flask_sqlalchemy, flask_bcrypt, flask_migrate, random, datetime, flask_wtf, wtforms]

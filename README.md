@@ -3,9 +3,10 @@
 # Website Set up 
 Run the following commands
 1. python init_db.py
-2. python create_tables.py
-3. python create_mockflights.py
-4. flask run
+2. python import_airports.py
+3. python create_tables.py
+4. python create_mockflights.py
+5. flask run
 
 # Features: Search Flights
 1. Select Trip Type

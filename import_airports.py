@@ -21,7 +21,7 @@ def import_airports():
                 # Skip duplicates
                 continue
             # Insert new record
-            airport = Airport(city=city, airport_name=airport_name, code=code, country=country)
+            airport = Airport(city=city, airportname=airportname, code=code, country=country)
             db.session.add(airport)
         db.session.commit()
 

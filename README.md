@@ -45,6 +45,6 @@ If you have anything questions, Please look at the FAQ page
 
 # Contributions:
 Ben Ho : [Booking Confirmation, View Booking, Ticket Cancellation, View Flight Status]
-Steven Lu : [Search Flights, Search Result, Accout, FAQ]
+Steven Lu : [Search Flights, Search Result, Account, FAQ]
 Hei Chun Chan : [Home Page, Search Flight, Search Result, Account, Github]
 Melanie Bordon : [View Flight Status, Seat Selection, Payment, FAQ]

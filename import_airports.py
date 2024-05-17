@@ -8,23 +8,23 @@ def import_airports():
     cursor = conn.cursor()
 
     # Select airport data from the SQLite database
-    cursor.execute('SELECT city, airportname, code, country FROM airports')
+    cursor.execute('SELECT city, airport_name, code, country FROM airports')
     airports = cursor.fetchall()
     conn.close()
 
     # Insert data into the Flask application's database using SQLAlchemy
-    with app.appcontext():
-        for city, airportname, code, country in airports:
+    with app.app_context():
+        for city, airport_name, code, country in airports:
             # Check if the airport already exists
             existing_airport = Airport.query.filter_by(code=code).first()
             if existing_airport:
                 # Skip duplicates
                 continue
             # Insert new record
-            airport = Airport(city=city, airportname=airportname, code=code, country=country)
+            airport = Airport(city=city, airport_name=airport_name, code=code, country=country)
             db.session.add(airport)
         db.session.commit()
 
 
-if __name__ == '__main':
+if __name__ == '__main__':
     import_airports()

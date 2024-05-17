@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,13 @@
     <style>
         .seating-chart {
             display: grid;
-            grid-template-columns: repeat(2, 1fr) 20px repeat(2, 1fr); /* Adds spacing between columns B and C */
+            grid-template-columns: repeat(2, 1fr) 20px repeat(2, 1fr);
+            /* Adds spacing between columns B and C */
             gap: 5px;
             max-width: 250px;
             margin: auto;
         }
+
         .seat {
             width: 30px;
             height: 30px;
@@ -24,27 +27,31 @@
             font-size: 12px;
             cursor: pointer;
         }
+
         .seat.selected {
             background-color: #6c7ae0;
             color: white;
         }
+
         .seat.occupied {
             background-color: #444;
             cursor: not-allowed;
         }
+
         .submit-container {
             text-align: center;
             margin-top: 20px;
-            padding-bottom: 50px; /* Ensure there's space for the button */
+            padding-bottom: 50px;
+            /* Ensure there's space for the button */
         }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const seats = document.querySelectorAll('.seat');
             const seatInput = document.getElementById('seat_number');
 
             seats.forEach(seat => {
-                seat.addEventListener('click', function() {
+                seat.addEventListener('click', function () {
                     if (!this.classList.contains('occupied')) {
                         seats.forEach(s => s.classList.remove('selected'));
                         this.classList.add('selected');
@@ -55,6 +62,7 @@
         });
     </script>
 </head>
+
 <body>
     <header>
         <h1>Seat Selection</h1>
@@ -63,13 +71,14 @@
         <form method="POST" action="/seat_selection">
             <div class="seating-chart">
                 {% for row in range(1, 21) %}
-                    {% for seat in ['A', 'B', 'C', 'D'] %}
-                        {% set seat_id = row ~ seat %}
-                        <div class="seat {% if seat_id in occupied_seats %}occupied{% endif %}" data-seat="{{ seat_id }}">{{ seat_id }}</div>
-                        {% if seat == 'B' %}
-                            <div style="width: 20px;"></div> <!-- Spacer between B and C -->
-                        {% endif %}
-                    {% endfor %}
+                {% for seat in ['A', 'B', 'C', 'D'] %}
+                {% set seat_id = row ~ seat %}
+                <div class="seat {% if seat_id in occupied_seats %}occupied{% endif %}" data-seat="{{ seat_id }}">{{
+                    seat_id }}</div>
+                {% if seat == 'B' %}
+                <div style="width: 20px;"></div> <!-- Spacer between B and C -->
+                {% endif %}
+                {% endfor %}
                 {% endfor %}
             </div>
             <div class="submit-container">
@@ -79,7 +88,8 @@
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 Pet Flight Booking</p>
+        <p>&copy; 2024 PetJett</p>
     </footer>
 </body>
+
 </html>

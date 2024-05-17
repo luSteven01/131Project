@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View My Booking</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
     <header>
         <h1>View My Booking</h1>
@@ -23,44 +25,45 @@
             <button type="submit">View Booking</button>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="flash {{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
         <h2>Your Bookings</h2>
         {% if bookings %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Flight Number</th>
-                        <th>Departure</th>
-                        <th>Arrival</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Confirmation Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for booking in bookings %}
-                        <tr>
-                            <td>{{ booking.flight_number }}</td>
-                            <td>{{ booking.departure }}</td>
-                            <td>{{ booking.arrival }}</td>
-                            <td>{{ booking.date }}</td>
-                            <td>{{ booking.time }}</td>
-                            <td>{{ booking.confirmation_number }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Confirmation Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.flight_number }}</td>
+                    <td>{{ booking.departure }}</td>
+                    <td>{{ booking.arrival }}</td>
+                    <td>{{ booking.date }}</td>
+                    <td>{{ booking.time }}</td>
+                    <td>{{ booking.confirmation_number }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         {% else %}
-            <p>No bookings found.</p>
+        <p>No bookings found.</p>
         {% endif %}
     </main>
     <footer>
-        <p>&copy; 2024 Pet Flight Booking</p>
+        <p>&copy; 2024 PetJett</p>
     </footer>
 </body>
+
 </html>

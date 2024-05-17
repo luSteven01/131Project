@@ -60,11 +60,10 @@ class Flight(db.Model):
 
 class Airport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    code = db.Column(db.String(10), nullable=False, unique=True)
-    airport_name = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(100), nullable=False)
+    airport_name = db.Column(db.String(200), nullable=False)
+    code = db.Column(db.String(10), nullable=False)
     country = db.Column(db.String(100), nullable=False)
-
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)

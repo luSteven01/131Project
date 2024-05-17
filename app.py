@@ -6,12 +6,46 @@ import random
 import string
 from datetime import datetime, timedelta
 
+from flask_wtf import FlaskForm,Form
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pets_flight_booking.db'
 app.config['SECRET_KEY'] = 'your_secret_key'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 migrate = Migrate(app, db)
+
+#Forms
+class LoginForm(FlaskForm, Form):
+    username = StringField('Username',validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Sign In')
+
+class ViewForm(FlaskForm, Form):
+    fn = StringField('Flight Number:',validators=[DataRequired()])
+    submit = SubmitField('Search')
+
+#db Class
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True)
+    email = db.Column(db.String(64))
+
+    posts = db.relationship('Post', backref='author',)
+
+    def __repr__(self):
+        return f'[User {self.username} / {self.email}]'
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(256))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return f'[User {self.body} / {self.user_id}]'
 
 
 class Flight(db.Model):
@@ -56,6 +90,20 @@ class Booking(db.Model):
 def home():
     return render_template('index.html')
 
+@app.route("/login", methods=["GET", "POST"])
+#tells flask to execute login() when user goes to /login path of the webpage
+def login():
+    current_form = LoginForm()
+    if current_form.validate_on_submit():
+        flash(f'VALID USERNAME {current_form.username.data}')
+        flash(f'VALID PASSWORD {current_form.password.data}')
+
+        ############Add a row to database (user table)####################
+        user = User(username=current_form.username.data, email = 'test@gmail.com')
+        db.session.add(user)
+        db.session.commit()
+
+    return render_template("login.html", form=current_form)
 
 @app.route('/search', methods=['GET', 'POST'])
 def search_flight():
